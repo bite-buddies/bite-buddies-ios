@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93F1010F2C5EB63E00704FAE /* BiteBuddiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1010E2C5EB63E00704FAE /* BiteBuddiesApp.swift */; };
-		93F101112C5EB63E00704FAE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F101102C5EB63E00704FAE /* ContentView.swift */; };
+		93F0FFDE2C5ED56100704835 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0FFDD2C5ED56100704835 /* Triangle.swift */; };
+		93F0FFE12C5EF75200704835 /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 93F0FFE02C5EF75200704835 /* FlowKit */; };
+		93F0FFE32C5EF82000704835 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93F0FFE22C5EF82000704835 /* README.md */; };
+		93F1010F2C5EB63E00704FAE /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1010E2C5EB63E00704FAE /* AppMain.swift */; };
+		93F101112C5EB63E00704FAE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F101102C5EB63E00704FAE /* MainView.swift */; };
 		93F101132C5EB63F00704FAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93F101122C5EB63F00704FAE /* Assets.xcassets */; };
-		93F101162C5EB63F00704FAE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93F101152C5EB63F00704FAE /* Preview Assets.xcassets */; };
+		93F1011D2C5EB6EA00704FAE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1011C2C5EB6EA00704FAE /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93F0FFDD2C5ED56100704835 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		93F0FFE22C5EF82000704835 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93F1010B2C5EB63E00704FAE /* BiteBuddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiteBuddies.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		93F1010E2C5EB63E00704FAE /* BiteBuddiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiteBuddiesApp.swift; sourceTree = "<group>"; };
-		93F101102C5EB63E00704FAE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		93F1010E2C5EB63E00704FAE /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
+		93F101102C5EB63E00704FAE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		93F101122C5EB63F00704FAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		93F101152C5EB63F00704FAE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		93F1011C2C5EB6EA00704FAE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,12 +31,64 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93F0FFE12C5EF75200704835 /* FlowKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93F0FFE42C5EF87C00704835 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				93F101122C5EB63F00704FAE /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		93F0FFE52C5EF8A500704835 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				93F0FFE62C5EF8AC00704835 /* Application */,
+				93F0FFE72C5EF8B100704835 /* Component */,
+				93F0FFE82C5EF8B900704835 /* Feature */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		93F0FFE62C5EF8AC00704835 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				93F1010E2C5EB63E00704FAE /* AppMain.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		93F0FFE72C5EF8B100704835 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				93F0FFDD2C5ED56100704835 /* Triangle.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		93F0FFE82C5EF8B900704835 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				93F0FFE92C5EF8C100704835 /* Main */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		93F0FFE92C5EF8C100704835 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				93F101102C5EB63E00704FAE /* MainView.swift */,
+				93F1011C2C5EB6EA00704FAE /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		93F101022C5EB63E00704FAE = {
 			isa = PBXGroup;
 			children = (
@@ -51,20 +108,11 @@
 		93F1010D2C5EB63E00704FAE /* BiteBuddies */ = {
 			isa = PBXGroup;
 			children = (
-				93F1010E2C5EB63E00704FAE /* BiteBuddiesApp.swift */,
-				93F101102C5EB63E00704FAE /* ContentView.swift */,
-				93F101122C5EB63F00704FAE /* Assets.xcassets */,
-				93F101142C5EB63F00704FAE /* Preview Content */,
+				93F0FFE22C5EF82000704835 /* README.md */,
+				93F0FFE42C5EF87C00704835 /* Resource */,
+				93F0FFE52C5EF8A500704835 /* Source */,
 			);
 			path = BiteBuddies;
-			sourceTree = "<group>";
-		};
-		93F101142C5EB63F00704FAE /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				93F101152C5EB63F00704FAE /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +131,9 @@
 			dependencies = (
 			);
 			name = BiteBuddies;
+			packageProductDependencies = (
+				93F0FFE02C5EF75200704835 /* FlowKit */,
+			);
 			productName = BiteBuddies;
 			productReference = 93F1010B2C5EB63E00704FAE /* BiteBuddies.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +162,9 @@
 				Base,
 			);
 			mainGroup = 93F101022C5EB63E00704FAE;
+			packageReferences = (
+				93F0FFDF2C5EF75200704835 /* XCRemoteSwiftPackageReference "FlowKit" */,
+			);
 			productRefGroup = 93F1010C2C5EB63E00704FAE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,7 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93F101162C5EB63F00704FAE /* Preview Assets.xcassets in Resources */,
+				93F0FFE32C5EF82000704835 /* README.md in Resources */,
 				93F101132C5EB63F00704FAE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,8 +191,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93F101112C5EB63E00704FAE /* ContentView.swift in Sources */,
-				93F1010F2C5EB63E00704FAE /* BiteBuddiesApp.swift in Sources */,
+				93F101112C5EB63E00704FAE /* MainView.swift in Sources */,
+				93F1010F2C5EB63E00704FAE /* AppMain.swift in Sources */,
+				93F1011D2C5EB6EA00704FAE /* MainViewModel.swift in Sources */,
+				93F0FFDE2C5ED56100704835 /* Triangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -254,7 +310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -269,27 +325,35 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BiteBuddies/Preview Content\"";
 				DEVELOPMENT_TEAM = 56V747V83R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BiteBuddies/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Bite Buddies";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.hackerdojo.BiteBuddies;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hackerdojo.bitebuddies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -298,27 +362,35 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BiteBuddies/Preview Content\"";
 				DEVELOPMENT_TEAM = 56V747V83R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BiteBuddies/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Bite Buddies";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.hackerdojo.BiteBuddies;
+				PRODUCT_BUNDLE_IDENTIFIER = org.hackerdojo.bitebuddies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -344,6 +416,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		93F0FFDF2C5EF75200704835 /* XCRemoteSwiftPackageReference "FlowKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mercen-Lee/FlowKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		93F0FFE02C5EF75200704835 /* FlowKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93F0FFDF2C5EF75200704835 /* XCRemoteSwiftPackageReference "FlowKit" */;
+			productName = FlowKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 93F101032C5EB63E00704FAE /* Project object */;
 }
