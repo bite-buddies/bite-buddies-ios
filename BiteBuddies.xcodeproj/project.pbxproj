@@ -92,6 +92,7 @@
 		93F101022C5EB63E00704FAE = {
 			isa = PBXGroup;
 			children = (
+				93F0FFE22C5EF82000704835 /* README.md */,
 				93F1010D2C5EB63E00704FAE /* BiteBuddies */,
 				93F1010C2C5EB63E00704FAE /* Products */,
 			);
@@ -108,7 +109,6 @@
 		93F1010D2C5EB63E00704FAE /* BiteBuddies */ = {
 			isa = PBXGroup;
 			children = (
-				93F0FFE22C5EF82000704835 /* README.md */,
 				93F0FFE42C5EF87C00704835 /* Resource */,
 				93F0FFE52C5EF8A500704835 /* Source */,
 			);
