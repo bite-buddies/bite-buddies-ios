@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ReviewView: View {
+    
     @Environment(\.dismiss) var dismiss
     @Bindable var viewModel = ReviewViewModel()
+    
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {

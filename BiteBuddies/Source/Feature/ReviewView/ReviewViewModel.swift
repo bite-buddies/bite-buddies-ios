@@ -9,5 +9,6 @@ import Foundation
 
 @Observable
 class ReviewViewModel {
+    
     var rate: Int = 10
 }

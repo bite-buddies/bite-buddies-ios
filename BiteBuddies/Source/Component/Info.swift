@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct Info: View {
+    
     let name: String
     let rate: Int
     let location: String
+    
     var body: some View {
         VStack(spacing: 4) {
             HStack(spacing: 8) {

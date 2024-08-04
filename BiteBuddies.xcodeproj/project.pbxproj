@@ -11,6 +11,8 @@
 		930C47E12C5F18EC0045A55C /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47E02C5F18EC0045A55C /* Info.swift */; };
 		930C47E32C5F22CC0045A55C /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47E22C5F22CC0045A55C /* ReviewViewModel.swift */; };
 		930C47E72C5F27DF0045A55C /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47E62C5F27DF0045A55C /* Marker.swift */; };
+		930C47E92C5F29F60045A55C /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47E82C5F29F60045A55C /* MainService.swift */; };
+		930C47EC2C5F2A0F0045A55C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 930C47EB2C5F2A0F0045A55C /* Alamofire */; };
 		93F0FFDE2C5ED56100704835 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0FFDD2C5ED56100704835 /* Triangle.swift */; };
 		93F0FFE12C5EF75200704835 /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 93F0FFE02C5EF75200704835 /* FlowKit */; };
 		93F0FFE32C5EF82000704835 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93F0FFE22C5EF82000704835 /* README.md */; };
@@ -27,6 +29,7 @@
 		930C47E02C5F18EC0045A55C /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		930C47E22C5F22CC0045A55C /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
 		930C47E62C5F27DF0045A55C /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
+		930C47E82C5F29F60045A55C /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		93F0FFDD2C5ED56100704835 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		93F0FFE22C5EF82000704835 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93F0FFEC2C5EFB6300704835 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93F0FFE12C5EF75200704835 /* FlowKit in Frameworks */,
+				930C47EC2C5F2A0F0045A55C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +75,7 @@
 		930C47E52C5F27D90045A55C /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				930C47E82C5F29F60045A55C /* MainService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -87,11 +92,11 @@
 		93F0FFE52C5EF8A500704835 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				930C47E52C5F27D90045A55C /* Service */,
-				930C47E42C5F27D10045A55C /* Model */,
 				93F0FFE62C5EF8AC00704835 /* Application */,
 				93F0FFE72C5EF8B100704835 /* Component */,
+				930C47E42C5F27D10045A55C /* Model */,
 				93F0FFE82C5EF8B900704835 /* Feature */,
+				930C47E52C5F27D90045A55C /* Service */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 			name = BiteBuddies;
 			packageProductDependencies = (
 				93F0FFE02C5EF75200704835 /* FlowKit */,
+				930C47EB2C5F2A0F0045A55C /* Alamofire */,
 			);
 			productName = BiteBuddies;
 			productReference = 93F1010B2C5EB63E00704FAE /* BiteBuddies.app */;
@@ -216,6 +222,7 @@
 			mainGroup = 93F101022C5EB63E00704FAE;
 			packageReferences = (
 				93F0FFDF2C5EF75200704835 /* XCRemoteSwiftPackageReference "FlowKit" */,
+				930C47EA2C5F2A0F0045A55C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 93F1010C2C5EB63E00704FAE /* Products */;
 			projectDirPath = "";
@@ -251,6 +258,7 @@
 				93F0FFF22C5EFD4800704835 /* Rate.swift in Sources */,
 				93F1011D2C5EB6EA00704FAE /* MainViewModel.swift in Sources */,
 				93F0FFDE2C5ED56100704835 /* Triangle.swift in Sources */,
+				930C47E92C5F29F60045A55C /* MainService.swift in Sources */,
 				930C47DF2C5F18C70045A55C /* ReviewView.swift in Sources */,
 				930C47E72C5F27DF0045A55C /* Marker.swift in Sources */,
 			);
@@ -476,6 +484,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		930C47EA2C5F2A0F0045A55C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 		93F0FFDF2C5EF75200704835 /* XCRemoteSwiftPackageReference "FlowKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Mercen-Lee/FlowKit";
@@ -487,6 +503,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		930C47EB2C5F2A0F0045A55C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 930C47EA2C5F2A0F0045A55C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		93F0FFE02C5EF75200704835 /* FlowKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 93F0FFDF2C5EF75200704835 /* XCRemoteSwiftPackageReference "FlowKit" */;

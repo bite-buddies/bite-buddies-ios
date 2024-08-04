@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct RestaurantView: View {
+    
     @Environment(\.dismiss) var dismiss
     @State private var statusBarCovered: Bool = false
+    
     @Flow var flow
     var body: some View {
         GeometryReader { outsideProxy in

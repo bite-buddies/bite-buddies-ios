@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct Rate: View {
+    
     @Binding var rate: Int
+    
     var body: some View {
         GeometryReader { geometryProxy in
             let width = geometryProxy.size.width

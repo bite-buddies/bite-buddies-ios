@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 
 struct Marker: Identifiable {
+    
     let id: Int
     let label: String
     let image: String

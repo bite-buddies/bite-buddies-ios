@@ -9,8 +9,10 @@ import SwiftUI
 import MapKit
 
 struct MainView: View {
+    
     @Bindable var viewModel = MainViewModel()
     @Flow var flow
+    
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 12) {
