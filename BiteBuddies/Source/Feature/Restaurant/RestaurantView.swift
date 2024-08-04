@@ -11,6 +11,7 @@ struct RestaurantView: View {
     
     @Environment(\.dismiss) var dismiss
     @State private var statusBarCovered: Bool = false
+    @State private var topMargin: CGFloat = 0
     
     @Flow var flow
     var body: some View {
@@ -25,7 +26,10 @@ struct RestaurantView: View {
                     } placeholder: {
                         Color(.lightGray)
                     }
-                    .frame(height: 257)
+                    .frame(
+                        width: outsideProxy.size.width,
+                        height: 257 + topMargin
+                    )
                     .overlay {
                         LinearGradient(
                             colors: [
@@ -36,8 +40,8 @@ struct RestaurantView: View {
                             endPoint: .bottom
                         )
                     }
-                    .frame(width: outsideProxy.size.width)
                     .clipped()
+                    .padding(.top, -topMargin)
                     Info(
                         name: "Chick-fil-a",
                         rate: 8,
@@ -55,6 +59,7 @@ struct RestaurantView: View {
                             .onChange(of: yCoordinate) {
                                 let margin = outsideProxy.safeAreaInsets.top + 54
                                 statusBarCovered = yCoordinate < -257 + margin
+                                topMargin = max(yCoordinate, 0)
                             }
                     }
                 )

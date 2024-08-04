@@ -8,14 +8,17 @@
 import Foundation
 import MapKit
 
-struct Marker: Identifiable {
+struct Restaurant: Decodable {
     
-    let id: Int
-    let label: String
-    let image: String
+    let rest_id: Int
+    let name: String
+//    let imageUrl: String
+    let rating: Int
+//    let coordinates: Coordinate
+    let address: String
     let latitude: Double
     let longitude: Double
-    var coordinate: CLLocationCoordinate2D {
+    var value: CLLocationCoordinate2D {
         .init(latitude: latitude, longitude: longitude)
     }
 }

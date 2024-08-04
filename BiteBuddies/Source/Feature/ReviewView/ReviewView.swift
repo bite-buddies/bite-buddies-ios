@@ -25,19 +25,11 @@ struct ReviewView: View {
                         .fill(Color(.lightGray))
                         .frame(height: 1)
                         .opacity(0.5)
-                    VStack(alignment: .leading) {
-                        Text("Rating")
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundStyle(Color.accentColor)
-                        Rate(rate: $viewModel.rate)
-                            .frame(height: 33)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(24)
                 }
             }
             .scrollIndicators(.never)
             .safeAreaPadding(.top, 53)
+            .safeAreaPadding(.bottom, 68)
             VStack(spacing: 0) {
                 HStack(spacing: 14) {
                     Button {
@@ -62,19 +54,32 @@ struct ReviewView: View {
                     .frame(height: 1)
                     .opacity(0.5)
                 Spacer()
-                Button {
-                    
-                } label: {
-                    Text("Submit")
-                        .font(.system(size: 20, weight: .medium))
-                        .padding(.vertical, 15)
-                        .foregroundStyle(Color.white)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                Rectangle()
+                    .fill(Color(.lightGray))
+                    .frame(height: 1)
+                    .opacity(0.5)
+                HStack(spacing: 8) {
+                    Text("Rate")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundStyle(Color.accentColor)
+                    Rate(rate: $viewModel.rate)
+                        .frame(height: 30)
+                    Spacer()
+                    Button {
+                        
+                    } label: {
+                        Text("Submit")
+                            .font(.system(size: 20, weight: .medium))
+                            .padding(.vertical, 10)
+                            .foregroundStyle(Color.white)
+                            .frame(width: 130)
+                            .background(Color.accentColor)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
                 }
-                .padding(.bottom, 12)
                 .padding(.horizontal, 24)
+                .padding(.vertical, 12)
+                .background(.bar)
             }
         }
     }

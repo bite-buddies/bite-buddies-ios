@@ -69,43 +69,45 @@ struct MainView: View {
                         interactionModes: .all
                     ) {
                         UserAnnotation()
-                        ForEach(viewModel.markers) { marker in
-                            Annotation(
-                                marker.label,
-                                coordinate: marker.coordinate,
-                                anchor: .bottom
-                            ) {
-                                Button {
-                                    flow.push(RestaurantView())
-//                                    viewModel.selectMarker(as: marker)
-                                } label: {
-                                    VStack(spacing: 8) {
-                                        AsyncImage(url: URL(string: marker.image)!) {
-                                            image in
-                                            image
-                                                .resizable()
-                                                .scaledToFill()
-                                        } placeholder: {
-                                            Color(.lightGray)
-                                        }
-                                        .frame(width: 75, height: 75)
-                                        .clipShape(Circle())
-                                        .background(
-                                            ZStack {
-                                                Circle()
-                                                    .fill(Color.accentColor)
-                                                    .frame(width: 95, height: 95)
-                                                Circle()
-                                                    .fill(Color.white)
-                                                    .frame(width: 83, height: 83)
+                        if let restaurants = viewModel.restaurants {
+                            ForEach(restaurants, id: \.rest_id) { marker in
+                                Annotation(
+                                    marker.name,
+                                    coordinate: marker.value,
+                                    anchor: .bottom
+                                ) {
+                                    Button {
+                                        flow.push(RestaurantView())
+                                        //                                    viewModel.selectMarker(as: marker)
+                                    } label: {
+                                        VStack(spacing: 8) {
+                                            AsyncImage(url: URL(string: "marker.image")!) {
+                                                image in
+                                                image
+                                                    .resizable()
+                                                    .scaledToFill()
+                                            } placeholder: {
+                                                Color(.lightGray)
                                             }
-                                        )
-                                        Triangle()
-                                            .fill(Color.accentColor)
-                                            .frame(width: 25, height: 25)
+                                            .frame(width: 75, height: 75)
+                                            .clipShape(Circle())
+                                            .background(
+                                                ZStack {
+                                                    Circle()
+                                                        .fill(Color.accentColor)
+                                                        .frame(width: 95, height: 95)
+                                                    Circle()
+                                                        .fill(Color.white)
+                                                        .frame(width: 83, height: 83)
+                                                }
+                                            )
+                                            Triangle()
+                                                .fill(Color.accentColor)
+                                                .frame(width: 25, height: 25)
+                                        }
                                     }
+                                    .padding(10)
                                 }
-                                .padding(10)
                             }
                         }
                     }
@@ -145,6 +147,9 @@ struct MainView: View {
         )
         .onAppear {
             viewModel.manager.requestAlwaysAuthorization()
+        }
+        .task {
+            await viewModel.onAppear()
         }
         .navigationBarHidden(true)
     }

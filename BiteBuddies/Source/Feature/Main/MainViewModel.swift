@@ -18,9 +18,7 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
     
     var locationAllowed: Bool?
     var searchText: String = ""
-    var markers: [Marker] = [
-        .init(id: 1, label: "Apple Park", image: "https://picsum.photos/200/200", latitude: 37.334606, longitude: -122.009102)
-    ]
+    var restaurants: [Restaurant]?
     var selectedMarker: Int?
     
     override init() {
@@ -29,17 +27,21 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
         updateLocationAllowed()
     }
     
-    func selectMarker(as marker: Marker) {
-        if selectedMarker == marker.id {
-            selectedMarker = nil
-        } else {
-            if let span = cameraPosition.region?.span {
-                withAnimation(.spring) {
-                    cameraPosition = .region(.init(center: marker.coordinate, span: span))
-                    selectedMarker = marker.id
-                }
-            }
-        }
+    func onAppear() async {
+        restaurants = try? await MainService.fetchRestaurants()
+    }
+    
+    func selectMarker(as marker: Restaurant) {
+//        if selectedMarker == marker.id {
+//            selectedMarker = nil
+//        } else {
+//            if let span = cameraPosition.region?.span {
+//                withAnimation(.spring) {
+//                    cameraPosition = .region(.init(center: marker.coordinate, span: span))
+//                    selectedMarker = marker.id
+//                }
+//            }
+//        }
     }
     
     func requestLocation() {
