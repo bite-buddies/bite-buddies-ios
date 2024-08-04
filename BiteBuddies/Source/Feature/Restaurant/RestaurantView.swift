@@ -10,6 +10,7 @@ import SwiftUI
 struct RestaurantView: View {
     @Environment(\.dismiss) var dismiss
     @State private var statusBarCovered: Bool = false
+    @Flow var flow
     var body: some View {
         GeometryReader { outsideProxy in
             ScrollView {
@@ -35,27 +36,11 @@ struct RestaurantView: View {
                     }
                     .frame(width: outsideProxy.size.width)
                     .clipped()
-                    VStack(spacing: 4) {
-                        HStack(spacing: 8) {
-                            Text("Chick-fil-a")
-                                .font(.system(size: 24, weight: .semibold))
-                            Image(systemName: "checkmark.seal.fill")
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                                .foregroundStyle(Color.accentColor)
-                        }
-                        HStack(spacing: 8) {
-                            Text("Average Rate")
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundStyle(Color.gray)
-                            Rate(rate: .constant(8))
-                                .frame(height: 16)
-                        }
-                        Text("550 W El Camino Real, Sunnyvale, CA 94087")
-                            .font(.system(size: 12))
-                            .foregroundStyle(Color(.lightGray))
-                    }
-                    .padding(.vertical, 24)
+                    Info(
+                        name: "Chick-fil-a",
+                        rate: 8,
+                        location: "550 W El Camino Real, Sunnyvale, CA 94087"
+                    )
                     Rectangle()
                         .fill(Color(.lightGray))
                         .frame(height: 1)
@@ -66,41 +51,47 @@ struct RestaurantView: View {
                         let yCoordinate = insideProxy.frame(in: .global).minY
                         Color.clear
                             .onChange(of: yCoordinate) {
-                                let margin = outsideProxy.safeAreaInsets.top + 46
-                                withAnimation {
-                                    statusBarCovered = yCoordinate < -257 + margin
-                                }
+                                let margin = outsideProxy.safeAreaInsets.top + 54
+                                statusBarCovered = yCoordinate < -257 + margin
                             }
                     }
                 )
             }
             .ignoresSafeArea(edges: .top)
             .safeAreaInset(edge: .top) {
-                HStack {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "arrow.left")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 23)
-                            .padding(5)
+                VStack(spacing: 0) {
+                    HStack {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "arrow.left")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 23)
+                                .padding(5)
+                        }
+                        Spacer()
+                        Button {
+                            flow.push(ReviewView())
+                        } label: {
+                            Image(systemName: "square.and.pencil")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 26)
+                                .padding(2)
+                        }
                     }
-                    Spacer()
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "square.and.pencil")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 26)
-                            .padding(2)
+                    .padding(.horizontal, 19)
+                    .padding(.vertical, 12)
+                    .foregroundStyle(statusBarCovered ? Color.black : .white)
+                    .background(statusBarCovered ? AnyShapeStyle(.bar) : .init(Color.clear))
+                    if statusBarCovered {
+                        Rectangle()
+                            .fill(Color(.lightGray))
+                            .frame(height: 1)
+                            .opacity(0.5)
                     }
                 }
-                .padding(.horizontal, 19)
-                .padding(.vertical, 8)
-                .foregroundStyle(statusBarCovered ? Color.black : .white)
-                .background(statusBarCovered ? AnyShapeStyle(.bar) : .init(Color.clear))
             }
             .scrollIndicators(.never)
             .navigationBarHidden(true)

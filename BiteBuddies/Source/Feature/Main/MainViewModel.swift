@@ -9,17 +9,6 @@ import CoreLocation
 import SwiftUI
 import MapKit
 
-struct MarkerModel: Identifiable {
-    let id: Int
-    let label: String
-    let image: String
-    let latitude: Double
-    let longitude: Double
-    var coordinate: CLLocationCoordinate2D {
-        .init(latitude: latitude, longitude: longitude)
-    }
-}
-
 @Observable
 class MainViewModel: NSObject, CLLocationManagerDelegate {
     
@@ -29,7 +18,7 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
     
     var locationAllowed: Bool?
     var searchText: String = ""
-    var markers: [MarkerModel] = [
+    var markers: [Marker] = [
         .init(id: 1, label: "Apple Park", image: "https://picsum.photos/200/200", latitude: 37.334606, longitude: -122.009102)
     ]
     var selectedMarker: Int?
@@ -40,7 +29,7 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
         updateLocationAllowed()
     }
     
-    func selectMarker(as marker: MarkerModel) {
+    func selectMarker(as marker: Marker) {
         if selectedMarker == marker.id {
             selectedMarker = nil
         } else {
