@@ -78,7 +78,7 @@ struct MainView: View {
                                     anchor: .bottom
                                 ) {
                                     VStack(spacing: 8) {
-                                        AsyncImage(url: URL(string: "marker.image")!) {
+                                        AsyncImage(url: URL(string: marker.image_url)!) {
                                             image in
                                             image
                                                 .resizable()
@@ -168,7 +168,12 @@ struct MainView: View {
                                     Text(selected.address)
                                         .font(.system(size: 12))
                                         .foregroundStyle(Color(.lightGray))
-                                    HStack {
+                                    HStack(spacing: 6) {
+                                        Text("A friend’s rating")
+                                            .font(.system(size: 12, weight: .semibold))
+                                            .foregroundStyle(Color.gray)
+                                        Rate(rate: .constant(selected.rating))
+                                            .frame(height: 12)
                                         Spacer()
                                         Text("View Reviews")
                                             .font(.system(size: 12, weight: .semibold))
@@ -236,9 +241,6 @@ struct MainView: View {
         )
         .onAppear {
             viewModel.manager.requestAlwaysAuthorization()
-        }
-        .task {
-            await viewModel.onAppear()
         }
         .navigationBarHidden(true)
     }

@@ -11,4 +11,15 @@ import Foundation
 class RestaurantViewModel {
     
     var sheetPresented: Bool = false
+    var reviews: [Review]?
+    var recommendations: [Recommendation]?
+    
+    func onAppear(id: Int) async {
+        reviews = try! await MainService.fetchReviews(id: id)
+        await fetchRecommendations(id: id)
+    }
+    
+    func fetchRecommendations(id: Int) async {
+        recommendations = try! await MainService.fetchRecommendations(id: id)
+    }
 }

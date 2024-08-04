@@ -18,9 +18,7 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
     
     var locationAllowed: Bool?
     var searchText: String = ""
-    var restaurants: [Restaurant]? = [
-        .init(rest_id: 1, name: "Chick-fil-a", rating: 5, address: "Address", latitude: 37.334606, longitude: -122.009102)
-    ]
+    var restaurants: [Restaurant]?
     var selected: Restaurant?
     
     override init() {
@@ -30,7 +28,12 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
     }
     
     func onAppear() async {
-        //        restaurants = try? await MainService.fetchRestaurants()
+        if let location {
+            restaurants = try! await MainService.fetchRestaurants(
+                latitude: location.latitude,
+                longitude: location.longitude
+            )
+        }
     }
     
     func selectMarker(as marker: Restaurant) {
@@ -71,6 +74,9 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.first?.coordinate
+        Task {
+            await onAppear()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

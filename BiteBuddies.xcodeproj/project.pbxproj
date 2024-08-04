@@ -16,7 +16,8 @@
 		930C47EE2C5FBE130045A55C /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47ED2C5FBE130045A55C /* Dish.swift */; };
 		930C47F02C5FC11B0045A55C /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47EF2C5FC11B0045A55C /* RestaurantViewModel.swift */; };
 		930C47F22C5FC1370045A55C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47F12C5FC1370045A55C /* Menu.swift */; };
-		930C47F42C5FC1920045A55C /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47F32C5FC1920045A55C /* Coordinate.swift */; };
+		930C47F62C6021F10045A55C /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47F52C6021F10045A55C /* Review.swift */; };
+		930C47F82C602DF60045A55C /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47F72C602DF60045A55C /* Recommendation.swift */; };
 		93F0FFDE2C5ED56100704835 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0FFDD2C5ED56100704835 /* Triangle.swift */; };
 		93F0FFE12C5EF75200704835 /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 93F0FFE02C5EF75200704835 /* FlowKit */; };
 		93F0FFE32C5EF82000704835 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93F0FFE22C5EF82000704835 /* README.md */; };
@@ -37,7 +38,8 @@
 		930C47ED2C5FBE130045A55C /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		930C47EF2C5FC11B0045A55C /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		930C47F12C5FC1370045A55C /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		930C47F32C5FC1920045A55C /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		930C47F52C6021F10045A55C /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		930C47F72C602DF60045A55C /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
 		93F0FFDD2C5ED56100704835 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		93F0FFE22C5EF82000704835 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93F0FFEC2C5EFB6300704835 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,7 +79,8 @@
 			children = (
 				930C47E62C5F27DF0045A55C /* Restaurant.swift */,
 				930C47F12C5FC1370045A55C /* Menu.swift */,
-				930C47F32C5FC1920045A55C /* Coordinate.swift */,
+				930C47F52C6021F10045A55C /* Review.swift */,
+				930C47F72C602DF60045A55C /* Recommendation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,7 +269,9 @@
 				930C47E32C5F22CC0045A55C /* ReviewViewModel.swift in Sources */,
 				930C47F22C5FC1370045A55C /* Menu.swift in Sources */,
 				930C47E12C5F18EC0045A55C /* Info.swift in Sources */,
+				930C47F82C602DF60045A55C /* Recommendation.swift in Sources */,
 				93F1010F2C5EB63E00704FAE /* AppMain.swift in Sources */,
+				930C47F62C6021F10045A55C /* Review.swift in Sources */,
 				93F0FFF02C5EFC4200704835 /* RestaurantView.swift in Sources */,
 				93F0FFF22C5EFD4800704835 /* Rate.swift in Sources */,
 				93F1011D2C5EB6EA00704FAE /* MainViewModel.swift in Sources */,
@@ -276,7 +281,6 @@
 				930C47EE2C5FBE130045A55C /* Dish.swift in Sources */,
 				930C47DF2C5F18C70045A55C /* ReviewView.swift in Sources */,
 				930C47E72C5F27DF0045A55C /* Restaurant.swift in Sources */,
-				930C47F42C5FC1920045A55C /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

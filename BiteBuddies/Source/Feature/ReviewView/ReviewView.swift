@@ -9,22 +9,39 @@ import SwiftUI
 
 struct ReviewView: View {
     
+    let data: Restaurant
+    
     @Environment(\.dismiss) var dismiss
     @Bindable var viewModel = ReviewViewModel()
+    @FocusState var focused: Bool
+    
+    @Flow var flow
     
     var body: some View {
         ZStack(alignment: .top) {
             ScrollView {
                 VStack(spacing: 0) {
                     Info(
-                        name: "Chick-fil-a",
-                        rate: 8,
-                        location: "550 W El Camino Real, Sunnyvale, CA 94087"
+                        name: data.name,
+                        rate: data.rating,
+                        location: data.address
                     )
                     Rectangle()
                         .fill(Color(.lightGray))
                         .frame(height: 1)
                         .opacity(0.5)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("View Reviews")
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundStyle(Color.accentColor)
+                        TextField("Enter dish name", text: $viewModel.menuText)
+                            .font(.system(size: 16))
+                            .focused($focused)
+                        Rectangle()
+                            .fill(focused ? Color.accentColor : Color.gray)
+                            .frame(height: 1)
+                    }
+                    .padding(24)
                 }
             }
             .scrollIndicators(.never)
@@ -66,7 +83,11 @@ struct ReviewView: View {
                         .frame(height: 30)
                     Spacer()
                     Button {
-                        
+                        Task {
+                            await viewModel.post(id: data.rest_id)
+                            flow.pop()
+                            flow.reload()
+                        }
                     } label: {
                         Text("Submit")
                             .font(.system(size: 20, weight: .medium))
@@ -82,11 +103,5 @@ struct ReviewView: View {
                 .background(.bar)
             }
         }
-    }
-}
-
-#Preview {
-    FlowPreview {
-        ReviewView()
     }
 }

@@ -12,9 +12,8 @@ struct Restaurant: Decodable, Equatable {
     
     let rest_id: Int
     let name: String
-//    let imageUrl: String
+    let image_url: String
     let rating: Int
-//    let coordinates: Coordinate
     let address: String
     let latitude: Double
     let longitude: Double

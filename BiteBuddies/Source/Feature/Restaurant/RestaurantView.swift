@@ -23,7 +23,7 @@ struct RestaurantView: View {
         GeometryReader { outsideProxy in
             ScrollView {
                 VStack(spacing: 0) {
-                    AsyncImage(url: URL(string: "https://picsum.photos/500/300")!) {
+                    AsyncImage(url: URL(string: data.image_url)!) {
                         image in
                         image
                             .resizable()
@@ -56,6 +56,34 @@ struct RestaurantView: View {
                         .fill(Color(.lightGray))
                         .frame(height: 1)
                         .opacity(0.5)
+                    VStack(alignment: .leading, spacing: 20) {
+                        HStack {
+                            Image(systemName: "fork.knife.circle")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundStyle(Color.accentColor)
+                            Text("Buddies' Reviews")
+                                .font(.system(size: 20, weight: .semibold))
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        if let reviews = viewModel.reviews {
+                            ForEach(reviews, id: \.self) { review in
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(review.dish_tried)
+                                        .font(.system(size: 16, weight: .semibold))
+                                    HStack(spacing: 6) {
+                                        Text("\(review.buddy_name)'s Rate")
+                                            .font(.system(size: 14))
+                                            .foregroundStyle(Color.gray)
+                                        Rate(rate: .constant(review.rating))
+                                            .frame(height: 16)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
+                    }
+                    .padding(24)
                 }
                 .background(
                     GeometryReader { insideProxy in
@@ -87,7 +115,7 @@ struct RestaurantView: View {
                         }
                         Spacer()
                         Button {
-                            flow.push(ReviewView())
+                            flow.push(ReviewView(data: data))
                         } label: {
                             Image(systemName: "square.and.pencil")
                                 .resizable()
@@ -154,10 +182,27 @@ struct RestaurantView: View {
                     Text("BuddyBot's\nRecommendation")
                         .font(.system(size: 20, weight: .semibold))
                         .multilineTextAlignment(.leading)
+                    VStack(spacing: 20) {
+                        ForEach(viewModel.recommendations!, id: \.self) { review in
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(review.dish_tried)
+                                    .font(.system(size: 16, weight: .semibold))
+                                HStack(spacing: 6) {
+                                    Rate(rate: .constant(review.rating))
+                                        .frame(height: 16)
+                                }
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
+                    .padding(.top, 20)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .padding(40)
             }
+        }
+        .task {
+            await viewModel.onAppear(id: data.rest_id)
         }
     }
 }
