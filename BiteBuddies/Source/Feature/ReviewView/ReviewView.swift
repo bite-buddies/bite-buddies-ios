@@ -45,6 +45,7 @@ struct ReviewView: View {
                 }
             }
             .scrollIndicators(.never)
+            .scrollDismissesKeyboard(.interactively)
             .safeAreaPadding(.top, 53)
             .safeAreaPadding(.bottom, 68)
             VStack(spacing: 0) {

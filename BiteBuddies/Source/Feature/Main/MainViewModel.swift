@@ -29,10 +29,11 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
     
     func onAppear() async {
         if let location {
-            restaurants = try! await MainService.fetchRestaurants(
-                latitude: location.latitude,
-                longitude: location.longitude
-            )
+//            restaurants = try! await MainService.fetchRestaurants(
+//                latitude: location.latitude,
+//                longitude: location.longitude
+//            )
+            restaurants = Constants.restaurants
         }
     }
     

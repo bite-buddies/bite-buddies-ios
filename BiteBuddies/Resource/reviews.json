@@ -1,0 +1,70 @@
+{
+  "1": [
+    { "dish_tried": "Mushroom Risotto", "rating": 8, "buddy_name": "Alice" },
+    { "dish_tried": "Caprese Salad", "rating": 7, "buddy_name": "Bob" },
+    { "dish_tried": "Garlic Bread", "rating": 9, "buddy_name": "Charlie" }
+  ],
+  "2": [
+    { "dish_tried": "Pork Dumplings", "rating": 9, "buddy_name": "Alice" },
+    { "dish_tried": "Beef Noodle Soup", "rating": 8, "buddy_name": "Bob" },
+    { "dish_tried": "Spring Rolls", "rating": 7, "buddy_name": "Charlie" }
+  ],
+  "3": [
+    { "dish_tried": "Avocado Toast", "rating": 6, "buddy_name": "David" },
+    { "dish_tried": "Quinoa Salad", "rating": 9, "buddy_name": "Eve" }
+  ],
+  "4": [],
+  "5": [
+    { "dish_tried": "Fish Tacos", "rating": 8, "buddy_name": "Alice" },
+    { "dish_tried": "Churros", "rating": 7, "buddy_name": "Bob" }
+  ],
+  "6": [{ "dish_tried": "Karaage", "rating": 8, "buddy_name": "Charlie" }],
+  "7": [],
+  "8": [{ "dish_tried": "Waffles", "rating": 7, "buddy_name": "Alice" }],
+  "9": [
+    { "dish_tried": "Brisket", "rating": 8, "buddy_name": "Bob" },
+    {
+      "dish_tried": "Pulled Pork Sandwich",
+      "rating": 9,
+      "buddy_name": "Charlie"
+    }
+  ],
+  "10": [{ "dish_tried": "Khao Pad", "rating": 9, "buddy_name": "Eve" }],
+  "11": [],
+  "12": [
+    { "dish_tried": "Fried Calamari", "rating": 7, "buddy_name": "Alice" },
+    { "dish_tried": "Margherita Pizza", "rating": 9, "buddy_name": "Bob" },
+    { "dish_tried": "Pepperoni Pizza", "rating": 8, "buddy_name": "Charlie" }
+  ],
+  "13": [
+    { "dish_tried": "Egg Salad Sandwich", "rating": 9, "buddy_name": "David" },
+    { "dish_tried": "Bagel with Lox", "rating": 8, "buddy_name": "Eve" }
+  ],
+  "14": [],
+  "15": [
+    { "dish_tried": "Hummus", "rating": 6, "buddy_name": "Alice" },
+    { "dish_tried": "Shawarma", "rating": 9, "buddy_name": "Bob" }
+  ],
+  "16": [{ "dish_tried": "Clam Chowder", "rating": 9, "buddy_name": "Alice" }],
+  "17": [
+    {
+      "dish_tried": "Truffle Mac and Cheese",
+      "rating": 4,
+      "buddy_name": "David"
+    }
+  ],
+  "18": [
+    { "dish_tried": "Beef Wellington", "rating": 6, "buddy_name": "Alice" }
+  ],
+  "19": [
+    { "dish_tried": "Eggplant Parmesan", "rating": 7, "buddy_name": "Charlie" }
+  ],
+  "20": [
+    { "dish_tried": "Pesto Ravioli", "rating": 9, "buddy_name": "Alice" },
+    {
+      "dish_tried": "Crispy Chicken Sandwich",
+      "rating": 6,
+      "buddy_name": "Bob"
+    }
+  ]
+}

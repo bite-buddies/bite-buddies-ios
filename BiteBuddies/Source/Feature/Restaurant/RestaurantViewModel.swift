@@ -15,11 +15,13 @@ class RestaurantViewModel {
     var recommendations: [Recommendation]?
     
     func onAppear(id: Int) async {
-        reviews = try! await MainService.fetchReviews(id: id)
+//        reviews = try! await MainService.fetchReviews(id: id)
+        reviews = Constants.reviews["\(id)"]
         await fetchRecommendations(id: id)
     }
     
     func fetchRecommendations(id: Int) async {
-        recommendations = try! await MainService.fetchRecommendations(id: id)
+        recommendations = Constants.recommendations["\(id)"]
+//        recommendations = try! await MainService.fetchRecommendations(id: id)
     }
 }

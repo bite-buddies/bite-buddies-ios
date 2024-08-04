@@ -8,6 +8,19 @@
 import SwiftUI
 import FlowKit
 
+struct Constants {
+    static func json<T: Decodable>(from name: String, to type: T.Type) -> T {
+        let decoder = JSONDecoder()
+        let path = Bundle.main.path(forResource: name, ofType: "json")
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+        return try! decoder.decode(T.self, from: data)
+    }
+    
+    static let restaurants = json(from: "restaurants", to: [Restaurant].self)
+    static let reviews = json(from: "reviews", to: [String: [Review]].self)
+    static let recommendations = json(from: "recommendations", to: [String: [Recommendation]].self)
+}
+
 extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
     
     override open func viewDidLoad() {

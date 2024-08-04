@@ -18,6 +18,10 @@
 		930C47F22C5FC1370045A55C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47F12C5FC1370045A55C /* Menu.swift */; };
 		930C47F62C6021F10045A55C /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47F52C6021F10045A55C /* Review.swift */; };
 		930C47F82C602DF60045A55C /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C47F72C602DF60045A55C /* Recommendation.swift */; };
+		930C47FC2C6042F10045A55C /* recommendations.json in Resources */ = {isa = PBXBuildFile; fileRef = 930C47F92C6042F10045A55C /* recommendations.json */; };
+		930C47FD2C6042F10045A55C /* restaurants.json in Resources */ = {isa = PBXBuildFile; fileRef = 930C47FA2C6042F10045A55C /* restaurants.json */; };
+		930C47FE2C6042F10045A55C /* reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 930C47FB2C6042F10045A55C /* reviews.json */; };
+		930C48002C60443D0045A55C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930C47FF2C60443D0045A55C /* Launch Screen.storyboard */; };
 		93F0FFDE2C5ED56100704835 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0FFDD2C5ED56100704835 /* Triangle.swift */; };
 		93F0FFE12C5EF75200704835 /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 93F0FFE02C5EF75200704835 /* FlowKit */; };
 		93F0FFE32C5EF82000704835 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93F0FFE22C5EF82000704835 /* README.md */; };
@@ -40,6 +44,10 @@
 		930C47F12C5FC1370045A55C /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		930C47F52C6021F10045A55C /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		930C47F72C602DF60045A55C /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		930C47F92C6042F10045A55C /* recommendations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recommendations.json; sourceTree = "<group>"; };
+		930C47FA2C6042F10045A55C /* restaurants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = restaurants.json; sourceTree = "<group>"; };
+		930C47FB2C6042F10045A55C /* reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reviews.json; sourceTree = "<group>"; };
+		930C47FF2C60443D0045A55C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		93F0FFDD2C5ED56100704835 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		93F0FFE22C5EF82000704835 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93F0FFEC2C5EFB6300704835 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,8 +104,12 @@
 		93F0FFE42C5EF87C00704835 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				930C47F92C6042F10045A55C /* recommendations.json */,
+				930C47FA2C6042F10045A55C /* restaurants.json */,
+				930C47FB2C6042F10045A55C /* reviews.json */,
 				93F0FFEC2C5EFB6300704835 /* Info.plist */,
 				93F101122C5EB63F00704FAE /* Assets.xcassets */,
+				930C47FF2C60443D0045A55C /* Launch Screen.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -253,6 +265,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				930C48002C60443D0045A55C /* Launch Screen.storyboard in Resources */,
+				930C47FD2C6042F10045A55C /* restaurants.json in Resources */,
+				930C47FE2C6042F10045A55C /* reviews.json in Resources */,
+				930C47FC2C6042F10045A55C /* recommendations.json in Resources */,
 				93F0FFE32C5EF82000704835 /* README.md in Resources */,
 				93F101132C5EB63F00704FAE /* Assets.xcassets in Resources */,
 			);
@@ -419,6 +435,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BiteBuddies/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Bite Buddies";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -432,7 +449,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.hackerdojo.bitebuddies;
+				PRODUCT_BUNDLE_IDENTIFIER = net.mercen.bitebuddies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -456,6 +473,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BiteBuddies/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Bite Buddies";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -469,7 +487,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.hackerdojo.bitebuddies;
+				PRODUCT_BUNDLE_IDENTIFIER = net.mercen.bitebuddies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

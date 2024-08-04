@@ -61,7 +61,7 @@ struct MainView: View {
                         .ignoresSafeArea()
                 }
             )
-            .zIndex(1)
+            .zIndex(2)
             if let locationAllowed = viewModel.locationAllowed {
                 if locationAllowed {
                     Map(

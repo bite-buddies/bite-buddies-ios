@@ -14,6 +14,6 @@ class ReviewViewModel {
     var rate: Int = 10
     
     func post(id: Int) async {
-        try! await MainService.postReview(restId: id, dishName: menuText, rate: rate)
+//        try! await MainService.postReview(restId: id, dishName: menuText, rate: rate)
     }
 }
