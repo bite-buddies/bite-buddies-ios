@@ -10,6 +10,8 @@
 		93F0FFDE2C5ED56100704835 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0FFDD2C5ED56100704835 /* Triangle.swift */; };
 		93F0FFE12C5EF75200704835 /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 93F0FFE02C5EF75200704835 /* FlowKit */; };
 		93F0FFE32C5EF82000704835 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 93F0FFE22C5EF82000704835 /* README.md */; };
+		93F0FFF02C5EFC4200704835 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0FFEF2C5EFC4200704835 /* RestaurantView.swift */; };
+		93F0FFF22C5EFD4800704835 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0FFF12C5EFD4800704835 /* Rate.swift */; };
 		93F1010F2C5EB63E00704FAE /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1010E2C5EB63E00704FAE /* AppMain.swift */; };
 		93F101112C5EB63E00704FAE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F101102C5EB63E00704FAE /* MainView.swift */; };
 		93F101132C5EB63F00704FAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93F101122C5EB63F00704FAE /* Assets.xcassets */; };
@@ -19,6 +21,9 @@
 /* Begin PBXFileReference section */
 		93F0FFDD2C5ED56100704835 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		93F0FFE22C5EF82000704835 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		93F0FFEC2C5EFB6300704835 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93F0FFEF2C5EFC4200704835 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
+		93F0FFF12C5EFD4800704835 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		93F1010B2C5EB63E00704FAE /* BiteBuddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiteBuddies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93F1010E2C5EB63E00704FAE /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		93F101102C5EB63E00704FAE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -41,6 +46,7 @@
 		93F0FFE42C5EF87C00704835 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				93F0FFEC2C5EFB6300704835 /* Info.plist */,
 				93F101122C5EB63F00704FAE /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -68,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				93F0FFDD2C5ED56100704835 /* Triangle.swift */,
+				93F0FFF12C5EFD4800704835 /* Rate.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -76,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				93F0FFE92C5EF8C100704835 /* Main */,
+				93F0FFEE2C5EFC3E00704835 /* Restaurant */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -87,6 +95,14 @@
 				93F1011C2C5EB6EA00704FAE /* MainViewModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		93F0FFEE2C5EFC3E00704835 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				93F0FFEF2C5EFC4200704835 /* RestaurantView.swift */,
+			);
+			path = Restaurant;
 			sourceTree = "<group>";
 		};
 		93F101022C5EB63E00704FAE = {
@@ -193,6 +209,8 @@
 			files = (
 				93F101112C5EB63E00704FAE /* MainView.swift in Sources */,
 				93F1010F2C5EB63E00704FAE /* AppMain.swift in Sources */,
+				93F0FFF02C5EFC4200704835 /* RestaurantView.swift in Sources */,
+				93F0FFF22C5EFD4800704835 /* Rate.swift in Sources */,
 				93F1011D2C5EB6EA00704FAE /* MainViewModel.swift in Sources */,
 				93F0FFDE2C5ED56100704835 /* Triangle.swift in Sources */,
 			);
@@ -331,7 +349,7 @@
 				DEVELOPMENT_TEAM = 56V747V83R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BiteBuddies/Info.plist;
+				INFOPLIST_FILE = BiteBuddies/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Bite Buddies";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
@@ -368,7 +386,7 @@
 				DEVELOPMENT_TEAM = 56V747V83R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BiteBuddies/Info.plist;
+				INFOPLIST_FILE = BiteBuddies/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Bite Buddies";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Using your location to find nearby restraunts.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Using your location to find nearby restraunts.";

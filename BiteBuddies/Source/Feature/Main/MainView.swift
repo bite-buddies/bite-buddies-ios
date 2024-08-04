@@ -74,15 +74,17 @@ struct MainView: View {
                                 anchor: .bottom
                             ) {
                                 Button {
-                                    viewModel.selectMarker(as: marker)
+                                    flow.push(RestaurantView())
+//                                    viewModel.selectMarker(as: marker)
                                 } label: {
                                     VStack(spacing: 8) {
                                         AsyncImage(url: URL(string: marker.image)!) {
                                             image in
                                             image
                                                 .resizable()
+                                                .scaledToFill()
                                         } placeholder: {
-                                            Color.gray
+                                            Color(.lightGray)
                                         }
                                         .frame(width: 75, height: 75)
                                         .clipShape(Circle())
@@ -142,6 +144,7 @@ struct MainView: View {
         .onAppear {
             viewModel.manager.requestAlwaysAuthorization()
         }
+        .navigationBarHidden(true)
     }
 }
 
