@@ -9,11 +9,16 @@ import SwiftUI
 
 struct RestaurantView: View {
     
+    let data: Restaurant
+    
     @Environment(\.dismiss) var dismiss
     @State private var statusBarCovered: Bool = false
+    @State private var titleCovered: Bool = false
     @State private var topMargin: CGFloat = 0
     
     @Flow var flow
+    @Bindable var viewModel = RestaurantViewModel()
+    
     var body: some View {
         GeometryReader { outsideProxy in
             ScrollView {
@@ -28,7 +33,7 @@ struct RestaurantView: View {
                     }
                     .frame(
                         width: outsideProxy.size.width,
-                        height: 257 + topMargin
+                        height: 257 + (viewModel.sheetPresented ? 0 : topMargin)
                     )
                     .overlay {
                         LinearGradient(
@@ -41,11 +46,11 @@ struct RestaurantView: View {
                         )
                     }
                     .clipped()
-                    .padding(.top, -topMargin)
+                    .padding(.top, (viewModel.sheetPresented ? 0 : -topMargin))
                     Info(
-                        name: "Chick-fil-a",
-                        rate: 8,
-                        location: "550 W El Camino Real, Sunnyvale, CA 94087"
+                        name: data.name,
+                        rate: data.rating,
+                        location: data.address
                     )
                     Rectangle()
                         .fill(Color(.lightGray))
@@ -59,6 +64,9 @@ struct RestaurantView: View {
                             .onChange(of: yCoordinate) {
                                 let margin = outsideProxy.safeAreaInsets.top + 54
                                 statusBarCovered = yCoordinate < -257 + margin
+                                withAnimation(.spring(duration: 0.2)) {
+                                    titleCovered = yCoordinate < -303 + margin
+                                }
                                 topMargin = max(yCoordinate, 0)
                             }
                     }
@@ -92,6 +100,18 @@ struct RestaurantView: View {
                     .padding(.vertical, 12)
                     .foregroundStyle(statusBarCovered ? Color.black : .white)
                     .background(statusBarCovered ? AnyShapeStyle(.bar) : .init(Color.clear))
+                    .overlay {
+                        if titleCovered {
+                            HStack(spacing: 4) {
+                                Text(data.name)
+                                    .font(.system(size: 18, weight: .semibold))
+                                Image(systemName: "checkmark.seal.fill")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundStyle(Color.accentColor)
+                            }
+                        }
+                    }
                     if statusBarCovered {
                         Rectangle()
                             .fill(Color(.lightGray))
@@ -103,11 +123,41 @@ struct RestaurantView: View {
             .scrollIndicators(.never)
             .navigationBarHidden(true)
         }
-    }
-}
-
-#Preview {
-    FlowPreview {
-        RestaurantView()
+        .overlay(alignment: .bottomTrailing) {
+            Button {
+                viewModel.sheetPresented = true
+            } label: {
+                Image(.robot)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 39, height: 39)
+                    .foregroundStyle(Color.white)
+                    .frame(width: 70, height: 70)
+                    .background(Color.accentColor)
+            }
+            .clipShape(Circle())
+            .padding(11)
+        }
+        .sheet(isPresented: $viewModel.sheetPresented) {
+            VStack(spacing: 0) {
+                Capsule()
+                    .fill(Color.black)
+                    .frame(width: 108, height: 4)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 17)
+                VStack(alignment: .leading, spacing: 2) {
+                    Image(.robot)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 36.7)
+                        .foregroundStyle(Color.accentColor)
+                    Text("BuddyBot's\nRecommendation")
+                        .font(.system(size: 20, weight: .semibold))
+                        .multilineTextAlignment(.leading)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .padding(40)
+            }
+        }
     }
 }

@@ -10,4 +10,5 @@ import Foundation
 @Observable
 class RestaurantViewModel {
     
+    var sheetPresented: Bool = false
 }

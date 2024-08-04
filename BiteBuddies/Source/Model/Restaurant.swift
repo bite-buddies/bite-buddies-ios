@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-struct Restaurant: Decodable {
+struct Restaurant: Decodable, Equatable {
     
     let rest_id: Int
     let name: String

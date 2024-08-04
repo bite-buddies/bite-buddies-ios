@@ -66,72 +66,161 @@ struct MainView: View {
                 if locationAllowed {
                     Map(
                         position: $viewModel.cameraPosition,
-                        interactionModes: .all
+                        interactionModes: viewModel.selected == nil ? .all : []
                     ) {
                         UserAnnotation()
                         if let restaurants = viewModel.restaurants {
                             ForEach(restaurants, id: \.rest_id) { marker in
+                                let isThisMarker = viewModel.selected?.rest_id == marker.rest_id
                                 Annotation(
                                     marker.name,
                                     coordinate: marker.value,
                                     anchor: .bottom
                                 ) {
-                                    Button {
-                                        flow.push(RestaurantView())
-                                        //                                    viewModel.selectMarker(as: marker)
-                                    } label: {
-                                        VStack(spacing: 8) {
-                                            AsyncImage(url: URL(string: "marker.image")!) {
-                                                image in
-                                                image
-                                                    .resizable()
-                                                    .scaledToFill()
-                                            } placeholder: {
-                                                Color(.lightGray)
-                                            }
-                                            .frame(width: 75, height: 75)
-                                            .clipShape(Circle())
-                                            .background(
-                                                ZStack {
-                                                    Circle()
-                                                        .fill(Color.accentColor)
-                                                        .frame(width: 95, height: 95)
-                                                    Circle()
-                                                        .fill(Color.white)
-                                                        .frame(width: 83, height: 83)
-                                                }
-                                            )
-                                            Triangle()
-                                                .fill(Color.accentColor)
-                                                .frame(width: 25, height: 25)
+                                    VStack(spacing: 8) {
+                                        AsyncImage(url: URL(string: "marker.image")!) {
+                                            image in
+                                            image
+                                                .resizable()
+                                                .scaledToFill()
+                                        } placeholder: {
+                                            Color(.lightGray)
                                         }
+                                        .frame(width: 120, height: 120)
+                                        .clipShape(Circle())
+                                        .background(
+                                            ZStack {
+                                                Circle()
+                                                    .fill(Color.accentColor)
+                                                    .frame(width: 150, height: 150)
+                                                Circle()
+                                                    .fill(Color.white)
+                                                    .frame(width: 130, height: 130)
+                                            }
+                                        )
+                                        Triangle()
+                                            .fill(Color.accentColor)
+                                            .frame(width: 40, height: 40)
                                     }
                                     .padding(10)
+                                    .scaleEffect(
+                                        isThisMarker ? 1 : 0.5,
+                                        anchor: .bottom
+                                    )
+                                    .highPriorityGesture(
+                                        TapGesture()
+                                            .onEnded {
+                                                viewModel.selectMarker(as: marker)
+                                            }
+                                    )
+                                    .animation(
+                                        .spring,
+                                        value: isThisMarker
+                                    )
                                 }
                             }
                         }
                     }
                     .mapStyle(.standard(pointsOfInterest: .excludingAll))
                     .mapControls {
-                        MapScaleView()
-                        MapUserLocationButton()
-                        MapCompass()
+                        if viewModel.selected == nil {
+                            MapScaleView()
+                            MapUserLocationButton()
+                            MapCompass()
+                        }
                     }
                     .mapControlVisibility(.automatic)
                     .safeAreaPadding(.top, 20)
                     .padding(.top, -20)
-                } else {
-                    Button {
-                        UIApplication.shared.open(
-                            URL(string: UIApplication.openSettingsURLString)!
-                        )
-                    } label: {
-                        Text("Allow location")
-                            .frame(maxHeight: .infinity)
+                    .overlay {
+                        if viewModel.selected != nil {
+                            Color.clear
+                                .contentShape(Rectangle())
+                                .simultaneousGesture(
+                                    TapGesture()
+                                        .onEnded {
+                                            viewModel.moved()
+                                        }
+                                        .simultaneously(
+                                            with: DragGesture()
+                                                .onChanged { _ in
+                                                    viewModel.moved()
+                                                }
+                                        )
+                                        .simultaneously(
+                                            with: MagnifyGesture()
+                                                .onChanged { _ in
+                                                    viewModel.moved()
+                                                }
+                                        )
+                                )
+                        }
                     }
+                    .overlay(alignment: .bottom) {
+                        if let selected = viewModel.selected {
+                            Button {
+                                flow.push(RestaurantView(data: selected))
+                            } label: {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(selected.name)
+                                        .font(.system(size: 18, weight: .semibold))
+                                        .foregroundStyle(Color.black)
+                                    Text(selected.address)
+                                        .font(.system(size: 12))
+                                        .foregroundStyle(Color(.lightGray))
+                                    HStack {
+                                        Spacer()
+                                        Text("View Reviews")
+                                            .font(.system(size: 12, weight: .semibold))
+                                            .foregroundStyle(Color.accentColor)
+                                    }
+                                }
+                                .padding(24)
+                            }
+                            .background(
+                                ZStack {
+                                    Color.white
+                                        .clipShape(
+                                            UnevenRoundedRectangle(
+                                                cornerRadii: .init(
+                                                    topLeading: 20,
+                                                    topTrailing: 20
+                                                )
+                                            )
+                                        )
+                                    Color.white
+                                        .clipShape(
+                                            RoundedRectangle(cornerRadius: 20)
+                                        )
+                                        .ignoresSafeArea()
+                                }
+                            )
+                            .transition(
+                                .asymmetric(
+                                    insertion: .push(from: .bottom),
+                                    removal: .push(from: .top)
+                                )
+                            )
+                        }
+                    }
+                } else {
+                    VStack {
+                        Text("Allow location to find nearby bites.")
+                            .font(.system(size: 16, weight: .medium))
+                        Button {
+                            UIApplication.shared.open(
+                                URL(string: UIApplication.openSettingsURLString)!
+                            )
+                        } label: {
+                            Label("Settings", systemImage: "gearshape.fill")
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             } else {
-                Spacer()
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
         .simultaneousGesture(

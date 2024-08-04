@@ -14,12 +14,14 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
     
     let manager = CLLocationManager()
     var location: CLLocationCoordinate2D?
-    var cameraPosition: MapCameraPosition = .region(.init())
+    var cameraPosition: MapCameraPosition = .userLocation(fallback: .automatic)
     
     var locationAllowed: Bool?
     var searchText: String = ""
-    var restaurants: [Restaurant]?
-    var selectedMarker: Int?
+    var restaurants: [Restaurant]? = [
+        .init(rest_id: 1, name: "Chick-fil-a", rating: 5, address: "Address", latitude: 37.334606, longitude: -122.009102)
+    ]
+    var selected: Restaurant?
     
     override init() {
         super.init()
@@ -28,20 +30,23 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
     }
     
     func onAppear() async {
-        restaurants = try? await MainService.fetchRestaurants()
+        //        restaurants = try? await MainService.fetchRestaurants()
     }
     
     func selectMarker(as marker: Restaurant) {
-//        if selectedMarker == marker.id {
-//            selectedMarker = nil
-//        } else {
-//            if let span = cameraPosition.region?.span {
-//                withAnimation(.spring) {
-//                    cameraPosition = .region(.init(center: marker.coordinate, span: span))
-//                    selectedMarker = marker.id
-//                }
-//            }
-//        }
+        withAnimation(.spring(duration: 0.3)) {
+            if selected == marker {
+                selected = nil
+            } else {
+                selected = marker
+                cameraPosition = .region(
+                    .init(
+                        center: marker.value,
+                        span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    )
+                )
+            }
+        }
     }
     
     func requestLocation() {
@@ -52,7 +57,7 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
         switch manager.authorizationStatus {
         case .notDetermined:
             locationAllowed = nil
-        case .authorizedAlways:
+        case .authorizedWhenInUse, .authorizedAlways:
             locationAllowed = true
             requestLocation()
         default:
@@ -63,15 +68,18 @@ class MainViewModel: NSObject, CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         updateLocationAllowed()
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.first?.coordinate
-        if let location {
-            cameraPosition = .region(.init(center: location, span: .init(latitudeDelta: 0.2, longitudeDelta: 0.2)))
-        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to get the user location: \(error.localizedDescription)")
+    }
+    
+    func moved() {
+        withAnimation(.spring(duration: 0.3)) {
+            selected = nil
+        }
     }
 }
